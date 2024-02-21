@@ -1,0 +1,367 @@
+/* Container title */
+.container {
+    margin-left: 200px ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    display: none;
+}
+
+.container.active {
+    display: flex;
+}
+
+#container_title {
+    width: 100%;
+    height: fit-content;
+    font-size: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+    color: var(--text_color);
+}
+
+.date_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-top: 5px;
+}
+
+.date_container #date:focus {
+    outline: none;
+}
+
+/* table Container Styling */
+
+.inner_container {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: fit-content;
+    overflow: hidden;
+    padding-top: 5px;
+}
+
+.table_container {
+    width: 100%;
+}
+
+
+.table_container table{
+    width: 100%;
+    height: 100%;
+    color: black;
+    border-spacing: 10px 5px;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px 0 0 10px;
+}
+
+#emails_proirity_container {
+    gap: 10px;
+}
+
+#emails_proirity_container table{
+    border-radius: 10px;
+}
+
+.food {
+    width: 100%;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px 0 0 10px;
+    padding: 10px;
+    display: flex;
+    font-size: 20px;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.dish_plan {
+    display: flex;
+    gap: 20px;
+}
+
+.dish_plan .dish_block {
+    width: 50%;
+}
+
+.food div input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.758);
+    height: 20px;
+    padding: 8px 8px 5px 8px ;
+    font-size: 20px;
+}
+
+.food div input:focus {
+    outline: none;
+} 
+
+.dish_block div {
+    display: flex;
+    flex-direction: column;
+}
+
+.dish_block:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.food_image img{
+    width: 100%;
+    border-radius: 10px;
+    background-color: aqua;
+}
+
+.dish_block div label{
+    display: block;
+    width: 20%;
+}
+
+.dish_block input{
+    width: 80%;
+}
+
+.food_title {
+    border-bottom: double;
+    border-bottom-color: rgba(255, 0, 0, 0.84) ;
+    border-bottom-width: 5px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.table_container table td{
+    text-align: justify;
+    overflow-wrap: anywhere;
+    padding: 2px 5px 2px 10px;
+    font-size: 15px;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.758);
+}
+
+.table_container table td:nth-child(odd){
+    width: 1%;
+    border-bottom: none;
+    position: relative;
+    padding: 2px 0px 2px 0;
+}
+
+.table_container table td:focus {
+    outline: none;
+    
+}
+
+.table_container table th {
+    border-bottom: double;
+    border-bottom-color: rgba(255, 0, 0, 0.84) ;
+    border-bottom-width: 5px;
+}
+
+.video_container {
+    width: 20%;
+}
+
+.video_container img {
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    object-fit: fill;
+    border-radius: 0 10px 10px 0;
+}
+
+.notes_table{
+    border-spacing: 1px 1px; 
+    padding: 5px;
+}
+
+.notes_table table tr td  {
+    border-bottom: none;
+}
+
+.notes {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent ;
+    font-size: 20px;
+    font-weight: bold;
+    resize: none;
+    margin-top: 10px
+}
+
+.notes:focus {
+    outline: none;
+}
+
+
+.table_container table td input.check_list {
+   position: absolute;
+   top: 20%;
+   left: 0;
+   transform: scale(1);
+}
+
+.table_container table td:has( > .check_list:checked) + td{
+    background-color: rgba(255, 0, 0, 0.84);
+    text-decoration: line-through;
+    color: white;
+}
+
+.water_block {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 25px;
+}
+
+.water_block_drop input {
+    display: none;
+}
+
+.water_block_drop label ion-icon{
+    font-size: 30px;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.water_block_drop input:checked+label ion-icon{
+    color: #0f5e9c;
+    box-shadow: 1px 1px 5px #2389da inset;
+    border-radius: 10px;
+}
+
+@media (max-width:900px) {
+    .container {
+        margin-left: 0;
+    }
+
+    .inner_container {
+        width: 97%;
+    }
+
+    .food div label {
+        font-size: 100%;
+    }
+
+    .food div:nth-child(3) {
+        font-size: 100%;
+    }
+
+    .food div input {
+        font-size: 100%;
+    }
+    .day {
+        font-size: 25px;
+    }
+}
+
+@media (max-width:600px) {
+    #container_title {
+        font-size: 7vw;
+        gap: 2vw;
+        justify-content: space-around;
+    }
+    #date {
+        width: 24vw;
+    }
+
+    .video_container {
+        display: none;
+    }
+
+    .table_container {
+        width: 100%;
+    }
+
+    .dish_plan{
+        flex-direction: column;
+    }
+
+    .dish_plan .dish_block {
+        width: 100%;
+    }
+
+    .table_container table {
+        border-radius: 10px;
+    }
+
+    .time {
+        font-size: 80%;
+    }
+}
+
+@media (max-width:500px) {
+    .water_block {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width:350px) {
+    .container {
+        font-size: 5vw;
+        gap: 8px;
+    }
+
+    #date {
+        width: 27vw;
+    }
+
+    .food_title {
+        font-size: 15px;
+    }
+    .food {
+        font-size: 15px;
+    }
+}
+
+@media (max-width:300px) {
+    .container {
+        font-size: 5vw;
+        gap: 8px;
+    }
+
+    #date {
+        width: 20vw;
+    }
+
+    .food_title {
+        font-size: 13px;
+    }
+    .food {
+        font-size: 13px;
+    }
+}
+
+@media print {
+    
+    .video_container {
+        display: none;
+    }
+
+    .time {
+        display: none;
+    }
+
+    .container {
+        margin-left: 0;
+    }
+
+    #die_routine_container {
+        display: none;
+    }
+
+    .inner_container .table_container{
+        border: 1px solid black;
+        margin-bottom: 10px;
+    }
+}

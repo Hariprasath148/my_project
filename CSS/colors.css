@@ -1,0 +1,21 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Moirai+One&display=swap');
+
+:root {
+    --main_color :  #00bcd5 ;
+    --base_color : #ffffff ;
+    --text_color : #000000;
+    --box_shadow : #000000;
+    --main_text  :  'Oswald', sans-serif ;
+    --shadow     :  rgba(0, 0, 0, 0.2);
+    --main_color2: red ;
+    --title_color : white;
+    --main_background: radial-gradient(circle, var(--main_color) 0%, var(--base_color) 100%);  
+}
+

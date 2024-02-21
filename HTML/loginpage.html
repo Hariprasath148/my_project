@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/CSS/login.css">
+    <link rel="stylesheet" href="/CSS/colors.css">
+</head>
+<body>
+    <div id="back_to_home_container"><button id="back_to_home_button" onclick="back_to_home()"><ion-icon name="arrow-back"></ion-icon></button><p>Back to home</p></div>
+    <div id="main_login_container">
+            <div id="login_container" class="active">
+                <div>
+                    <form action="index.html" name="login_form" onsubmit="return validate_login(this)">
+                        <h4 class="header">LogIn to &nbsp<span>Digital</span>&nbsp<span>planners</span></h4>
+                        <input type="text" name="login_email" id="login_email" placeholder="Enter Your Email" required autocomplete="off">
+                        <p id="mail_msg">Invaild Email</p>
+                        <input type="password" name="login_password" id="login_password" placeholder="Enter Your Password" required autocomplete="off"> 
+                        <a id="fogot_password" href="#">forgot password</a>
+                        <input type="submit" value="Login">
+                    </form>
+                </div>
+                <div class="divider"><hr><p class="OR">or</p></div>
+                <div class="second_part">
+                    <a href="#"><img src="/images/facebook.png" alt="...">Continue With Facebook</a>
+                    <a href="#"><img src="/images/google.png" alt="...">Continue With Google&nbsp&nbsp&nbsp</a>
+                    <a href="#"><img src="/images/x.png" alt="...">Continue With X&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                    <button onclick="Switch_page(1)">Don't have an account <span>Sign Up</span></button>
+                </div>
+            </div>
+            <div id="signup_container">
+                <form action="index.html" name="signup_from" onsubmit="return validate_signin(this)">
+                    <h4 class="header">Sign Up to &nbsp<span>Digital</span>&nbsp<span>planners</span></h4>
+                    <input type="text" name="signup_full_name" id="signup_full_name" placeholder="Enter Your FullName" required autocomplete="off" oninput="check_name(this)" onfocusout="check_name(this)">
+                    <p id="name_msg">Name doesn't contains specailCharcter</p>
+                    <input type="text" name="signup_email" id="signup_email" placeholder="Enter Your Email" required autocomplete="off">
+                    <p id="signin_msg">Invaild Email</p>
+                    <input type="password" name="sigup_password" id="signup_password" placeholder="Enter Your Password" required autocomplete="off">
+                    <input type="password" name="sigup_confrim_password" id="signup_confrim_password" placeholder="Confrim Your Password" required autocomplete="off">
+                    <p id="password_msg">Both password will be same</p>
+                    <input type="submit" value="Register">
+                </form>
+                <div class="divider"><hr><p class="OR">or</p></div>
+                <div class="second_part">
+                    <a href="#"><img src="/images/facebook.png" alt="...">Continue With Facebook</a>
+                    <a href="#"><img src="/images/google.png" alt="...">Continue With Google&nbsp&nbsp&nbsp</a>
+                    <a href="#"><img src="/images/x.png" alt="...">Continue With X&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                    <button onclick="Switch_page(2)">Already have an account <span>Login</span></button>
+                </div>
+            </div>
+            <div class="loading_container hide">
+                <div id="loader"></div>
+            </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
+    <script src="/API/login.js"></script>
+</body>
+</html>

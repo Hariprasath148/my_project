@@ -1,0 +1,124 @@
+.side_bar {
+    z-index: 250;
+    position: fixed;
+    width: 200px;
+    height: -webkit-fill-available;
+    top: 93px;
+    left: 0;
+    background-color: var(--main_color);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+#inner_side_links {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: auto;
+}
+.side_bar button {
+    height: 50px;
+    margin: 10px 0;
+    background-color: #ffffff;
+    border: none;
+    color: green;
+    font-size: 15px;
+
+}
+
+#inner_side_links a{
+    padding: 15px 0px;
+    text-decoration: none ;
+    color: var(--title_color);
+    font-size: 18px;
+    width: 100%;
+    border-bottom: 2px solid var(--title_color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 17px;
+}
+
+#inner_side_links a ion-icon {
+    font-size: 24px;
+}
+
+#inner_side_links a:hover {
+    background-color: rgba(128, 128, 128, 0.307);
+}
+
+#side_bar_open_btn {
+    height: 30px;
+    width: 40px ;
+    position: fixed;
+    top: 140px;
+    left: 0;
+    display: block;
+    border: 1px solid var(--text_color);
+    background-color: rgba(255, 255, 255, 1);
+    color: black ;
+    border-radius: 0 10px 10px 0;
+    z-index: 100;
+}
+
+#side_bar_close_btn {
+    display: none;
+}
+
+.over_lay_sidebar {
+    z-index: 240;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width  : 100vw;
+    display: none;
+    background-color: var(--shadow) ;
+    backdrop-filter: blur(2px);
+}
+
+@media (max-width : 900px) {
+    .side_bar {
+        left: -200px;
+    }
+
+    #side_bar_close_btn {
+            display: block;
+            background-color: transparent;
+            color: var(--title_color);
+            border: none;
+            width: 100%;
+            height: fit-content;
+            padding: 10px 20px 2px 2px;
+            font-size: 30px;
+            text-align: right;
+            border-bottom: 2px solid var(--title_color);
+            border-radius: 3px;
+    }
+    
+    #side_bar_close_btn ion-icon:hover {
+        background-color: var(--shadow);
+    }
+
+    .side_bar.active {
+        left: 0;
+    }
+
+    .side_bar.active + .over_lay_sidebar{
+        display: block;
+    }
+
+}
+
+@media print {
+    
+    .side_bar {
+        display: none;
+    }
+    
+    #side_bar_open_btn {
+        display: none;
+    }
+}

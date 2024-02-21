@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital planners</title>
+    <link rel="icon" type="image/png" href="/check.png">
+    <!-- style sheet links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/colors.css">
+    <link rel="stylesheet" href="/CSS/index.css" id="index_theme">
+    <link rel="stylesheet" href="/CSS/container_style.css">
+    <link rel="stylesheet" href="/CSS/pop_container.css">
+    <link rel="stylesheet" href="/CSS/sidebar.css">
+</head>
+<body>
+    <div class="app_container">
+        <!-- title container -->
+        <div class="title">
+            <!-- burger menu -->
+            <div class="burgermenu" id="burgermenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!-- web_name -->
+            <p id="web_name" > <span>Digital </span> Planners</p>
+            <!-- title  inside second container -->
+            <div class="second">
+                <!-- navigation bar -->
+                <div id="navigation_bar">
+                    <button id="navigation_bar_close_button"><ion-icon name="close"></ion-icon></button><hr>
+                    <a href="index.html" class="navigation_button"><ion-icon name="home"></ion-icon>Home</a><hr>
+                    <a href="/HTML/about.html" class="navigation_button"><i style="margin-top: 2px;" class="fa-solid fa-address-card"></i>About</a><hr>
+                    <a href="javascript:void(0);" class="navigation_button" onclick="open_pop_container('help');"><ion-icon name="help"></ion-icon>Help</a><hr>
+                    <a href="javascript:void(0);" class="navigation_button" onclick="open_pop_container('settings');"><ion-icon name="settings"></ion-icon>Settings</a><hr>
+                </div>
+                <!-- navigation over lay -->
+                <div class="over_lay_navigation" id="over_lay_navigation"></div>
+                <div id="title_buttons">
+                    <div id="theme_btn">
+                        <input type="checkbox" name="theme_btn" id="changetheme_btn" onchange="changetheme(this)">
+                        <label for="changetheme_btn" id="changetheme_btn_toggle"></label>
+                    </div>
+                    <div id="login_container">
+                        <div id="arrow">
+                            <label id="arrow_side_lable" for="arrow_side"><ion-icon name="arrow-dropdown"></ion-icon></label>
+                            <input type="checkbox" name="profile_open" id="arrow_side">
+                            <div id="profile_card">
+                                <div id="profile_card_name_container">
+                                    <p id="user_name">Hari Prasath</p>
+                                    <button id="profile_card_close_button" onclick="close_profile_card()"><ion-icon name="close"></ion-icon></button>
+                                </div><hr>
+                                <div id="profile_card_second">
+                                    <div>
+                                        <div id="gretting">Welcome login to continue</div>
+                                    </div>
+                                    <div id="log_btn">
+                                        <a href="loginpage.html">log in</a>
+                                        <a href="loginpage.html">Sign up</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div><ion-icon id="profile_pic" name="contact"></ion-icon></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- top days scroll bar -->
+        <div id="top_scrollbar">
+            <a href="#" class="scroll_content active" onclick="change_day_container(this,'sunday')">Sunday</a>
+            <a href="#" class="scroll_content" onclick="change_day_container(this,'monday')">Monday</a>
+            <a href="#" class="scroll_content" onclick="change_day_container(this,'tuesday')">Tuesday</a>
+            <a href="#" class="scroll_content" onclick="change_day_container(this,'wednesday')">Wednesday</a>
+            <a href="#" class="scroll_content" onclick="change_day_container(this,'thursday')">Thursday</a>
+            <a href="#" class="scroll_content" onclick="change_day_container(this,'friday')">Friday</a>
+            <a href="#" class="scroll_content" onclick="change_day_container(this,'saturday')">Saturday</a>
+        </div>
+        <!-- help box container -->
+        <div id="help_container" class="pop_container">
+            <div id="help_pop_heading" class="pop_title">
+                <button id="help_reset_button" onclick="reset()"><ion-icon name="refresh"></ion-icon></button>
+                <p id="help_heading" class="pop_heading">How can i help You <ion-icon name="logo-reddit" id="help_logo"></ion-icon></p>
+                <button class="pop_close_button" onclick="close_pop_container('help');"><ion-icon name="close"></ion-icon></button>
+            </div>
+            <ul>
+                <li class="question" onclick="getanswer(this.getAttribute('data-name'));" data-name="1">How to start to shedule my plan</li>
+                <li class="question" onclick="getanswer(this.getAttribute('data-name'));" data-name="2">How to login</li>
+                <li class="question" onclick="getanswer(this.getAttribute('data-name'));" data-name="3">How to chage the theme</li>
+                <li class="question" onclick="getanswer(this.getAttribute('data-name'));" data-name="4">How to save the plan</li>
+                <li class="question" onclick="getanswer(this.getAttribute('data-name'));" data-name="5">how change the Theme color</li>
+                <li class="question" onclick="getanswer(this.getAttribute('data-name'));" data-name="6">how reset the theme Color</li>
+            </ul>
+        </div>
+        <!-- settings box container -->
+        <div id="settings_container" class="pop_container">
+            <div id="settings_pop_heading" class="pop_title">
+                <p id="settings_help" class="pop_heading">Settings</p>
+                <button class="pop_close_button" onclick="close_pop_container('settings');"><ion-icon name="close"></ion-icon></button>
+            </div>
+            <div id="settings_main_container">
+                <h2>Theme Color BackGround :</h2>
+                <hr>
+                <div class="color_pallet">
+                    <p class="settings_colors" data-number="0" style=" background-color: #4286f5;" onclick="change_maincolor('#4286f5',this)"></p>
+                    <p class="settings_colors" data-number="1" style=" background-color: #03a9f5;" onclick="change_maincolor('#03a9f5',this)"></p>
+                    <p class="settings_colors active" data-number="2" style=" background-color: #00bcd5;" onclick="change_maincolor('#00bcd5',this)"></p>
+                    <p class="settings_colors" data-number="3" style=" background-color: #3f51b5;" onclick="change_maincolor('#3f51b5',this)"></p>
+                    <p class="settings_colors" data-number="4" style=" background-color: #673bb7;" onclick="change_maincolor('#673bb7',this)"></p>
+                    <p class="settings_colors" data-number="5" style=" background-color: #9c28b1;" onclick="change_maincolor('#9c28b1',this)"></p>
+                    <p class="settings_colors" data-number="6" style=" background-color: #b19bd9;" onclick="change_maincolor('#b19bd9',this)"></p>
+                    <p class="settings_colors" data-number="7" style=" background-color: #009788;" onclick="change_maincolor('#009788',this)"></p>
+                    <p class="settings_colors" data-number="8" style=" background-color: #109d58;" onclick="change_maincolor('#109d58',this)"></p>
+                    <p class="settings_colors" data-number="9" style=" background-color: #8bc24a;" onclick="change_maincolor('#8bc24a',this)"></p>
+                    <p class="settings_colors" data-number="10" style=" background-color: #cddc39;" onclick="change_maincolor('#cddc39',this)"></p>
+                    <p class="settings_colors" data-number="11" style=" background-color: #ffeb3c;" onclick="change_maincolor('#ffeb3c',this)"></p>
+                    <p class="settings_colors" data-number="12" style=" background-color: #f5b400;" onclick="change_maincolor('#f5b400',this)"></p>
+                    <p class="settings_colors" data-number="13" style=" background-color: #ea1e63;" onclick="change_maincolor('#ea1e63',this)"></p>
+                    <p class="settings_colors" data-number="14" style=" background-color: #fe5722;" onclick="change_maincolor('#fe5722',this)"></p>
+                    <p class="settings_colors" data-number="15" style=" background-color: #dc4437;" onclick="change_maincolor('#dc4437',this)"></p>
+                    <p class="settings_colors" data-number="16" style=" background-color: #ff758f;" onclick="change_maincolor('#ff758f',this)"></p>
+                    <p class="settings_colors" data-number="17" style=" background-color: #2596be;" onclick="change_maincolor('#2596be',this)"></p>
+                    <p class="settings_colors" data-number="18" style=" background-color: #795547;" onclick="change_maincolor('#795547',this)"></p>
+                    <p class="settings_colors" data-number="19" style=" background-color: #607d8b;" onclick="change_maincolor('#607d8b',this)"></p>
+                    <p class="settings_colors" data-number="20" style=" background-color: #000000;" onclick="change_maincolor('#000000',this)"></p>
+                </div>
+                <div id="settings_theme_button_container">
+                    <button class="settings_theme_button" onclick="save_settings_color()">Save</button>
+                    <button class="settings_theme_button" onclick="reset_settings_color()">Reset</button>
+                </div>
+            </div>
+        </div>
+        <!-- side bar  -->
+        <button id="side_bar_open_btn">></button>
+        <div class="side_bar">
+            <div id="inner_side_links">
+                <button id="side_bar_close_btn"><ion-icon name="close"></ion-icon></button>
+                <a href="#container_title" onclick="close_sidebar()" class="active"> &nbsp <ion-icon name="hourglass"></ion-icon> Date/Day/Time</a>
+                <a href="#to_do_list_container" onclick="close_sidebar()"> &nbsp <ion-icon name="list-box"></ion-icon> To Do list</a>
+                <a href="#emails_proirity_container" onclick="close_sidebar()"> &nbsp <ion-icon name="alert"></ion-icon>  Priorities</a>
+                <a href="#emails_proirity_container" onclick="close_sidebar()"> &nbsp <ion-icon name="mail"></ion-icon> Email/Calls</a>
+                <a href="#die_routine_container" onclick="close_sidebar()"> &nbsp <ion-icon name="beer"></ion-icon> Diet Routine</a>
+                <a href="#notes_container" onclick="close_sidebar()"> &nbsp <ion-icon name="clipboard"></ion-icon> Notes</a>
+                <!-- <button onclick="saveData()">Save</button> -->
+            </div>
+        </div>
+        <!-- side bar lay -->
+        <div class="over_lay_sidebar" id="over_lay_sidebar"></div>
+        <!-- Container Title -->
+        <div id="container_title">
+            <div class="time">00:00:00</div>
+            <p><span class="day">Sunday</span></p>
+            <div class="date_container">
+                <label for="date">Date :</label>
+                <input type="date" id="date" style=" margin-top: 6px; height: 30px";>
+            </div>
+        </div>
+        <!-- main content planer -->
+        <div class="main_container">
+            <div class="container active" id="sunday_container">
+                <div class="inner_container" id="to_do_list_container">
+                    <div class="table_container">
+                        <table id="to_do_list">
+                            <th colspan="2">To do list</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                    <div class="video_container">
+                        <img id="to_do_image" src="/images/todo6.png" alt="....">
+                    </div>
+                </div>
+                <div class="inner_container" id="emails_proirity_container">
+                    <div class="table_container" id="priorities_container">
+                        <table id="priorities">
+                            <th colspan="2">PRIORITIES</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                    <div class="table_container" id="emails_calls_container">
+                        <table id="emails_calls">
+                            <th colspan="2">EMAILS / CALLS</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="inner_container" id="die_routine_container" >
+                    <div class="table_container food">
+                        <div class="food_title block"><h3>DIET AND ROUTINES</h3></div>
+                        <div class="block water_block">
+                            <div>Water Intake :</div>
+                            <div class="water_block_drop">
+                                <input type="checkbox" id="water1">
+                                <label for="water1"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water2">
+                                <label for="water2"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water3">
+                                <label for="water3"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water4">
+                                <label for="water4"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water5">
+                                <label for="water5"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water6">
+                                <label for="water6"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water7">
+                                <label for="water7"><ion-icon name="water"></ion-icon></label>
+                            </div>
+                        </div>
+                        <div class="block dish_plan">
+                            <div class="food_image dish_block"><img id="food_img" src="/images/mainfood.jpg" alt=""></div>
+                            <div class="dish_block">
+                                <div>
+                                    <label for="morning">Breakfast</label>
+                                    <input type="text" id="morning" onfocus="food_change(1)" onblur="food_reset()">
+                                </div>
+                                <div>
+                                    <label for="afternoon">Afternoon</label>
+                                    <input type="text" id="afternoon" onfocus="food_change(2)" onblur="food_reset()">
+                                </div>
+                                <div>
+                                    <label for="dinner">Dinner</label>
+                                    <input type="text" id="dinner" onfocus="food_change(3)" onblur="food_reset()">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video_container">
+                        <img src="/images/food3.jpg" alt=".....">
+                    </div>
+                </div>
+                <div class="inner_container" id="notes_container" >
+                    <div class="table_container">
+                        <table class="notes_table">
+                            <th>NOTES</th>
+                            <tr><td><textarea name="notes" class="notes" cols="30" rows="8" spellcheck="false"></textarea></td></tr>
+                        </table>
+                    </div>
+                    <div class="video_container">
+                        <img src="/images/notes.jpg" alt="...">
+                    </div>
+                </div>
+            </div>
+            <div class="container" id="monday_container">
+                <div class="inner_container" id="to_do_list_container">
+                    <div class="table_container">
+                        <table id="to_do_list">
+                            <th colspan="2">To do list</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                    <div class="video_container">
+                        <img id="to_do_image" src="/images/todo6.png" alt="....">
+                    </div>
+                </div>
+                <div class="inner_container" id="emails_proirity_container">
+                    <div class="table_container" id="priorities_container">
+                        <table id="priorities">
+                            <th colspan="2">PRIORITIES</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                    <div class="table_container" id="emails_calls_container">
+                        <table id="emails_calls">
+                            <th colspan="2">EMAILS / CALLS</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="inner_container" id="die_routine_container">
+                    <div class="table_container food">
+                        <div class="food_title block"><h3>DIET AND ROUTINES</h3></div>
+                        <div class="block water_block">
+                            <div>Water Intake :</div>
+                            <div class="water_block_drop">
+                                <input type="checkbox" id="water1">
+                                <label for="water1"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water2">
+                                <label for="water2"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water3">
+                                <label for="water3"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water4">
+                                <label for="water4"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water5">
+                                <label for="water5"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water6">
+                                <label for="water6"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water7">
+                                <label for="water7"><ion-icon name="water"></ion-icon></label>
+                            </div>
+                        </div>
+                        <div class="block dish_plan">
+                            <div class="food_image dish_block"><img id="food_img" src="/images/mainfood.jpg" alt=""></div>
+                            <div class="dish_block">
+                                <div>
+                                    <label for="morning">Breakfast</label>
+                                    <input type="text" id="morning" onfocus="food_change(1)" onblur="food_reset()">
+                                </div>
+                                <div>
+                                    <label for="afternoon">Afternoon</label>
+                                    <input type="text" id="afternoon" onfocus="food_change(2)" onblur="food_reset()">
+                                </div>
+                                <div>
+                                    <label for="dinner">Dinner</label>
+                                    <input type="text" id="dinner" onfocus="food_change(3)" onblur="food_reset()">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video_container">
+                        <img src="/images/food3.jpg" alt=".....">
+                    </div>
+                </div>
+                <div class="inner_container" id="notes_container">
+                    <div class="table_container">
+                        <table class="notes_table">
+                            <th>NOTES</th>
+                            <tr><td><textarea name="notes" class="notes" cols="30" rows="8" spellcheck="false"></textarea></td></tr>
+                        </table>
+                    </div>
+                    <div class="video_container">
+                        <img src="/images/notes.jpg" alt="...">
+                    </div>
+                </div>
+            </div>
+            <div class="container" id="tuesday_container">
+                <div class="inner_container" id="to_do_list_container">
+                    <div class="table_container">
+                        <table id="to_do_list">
+                            <th colspan="2">To do list</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                    <div class="video_container">
+                        <img id="to_do_image" src="/images/todo6.png" alt="....">
+                    </div>
+                </div>
+                <div class="inner_container" id="emails_proirity_container">
+                    <div class="table_container" id="priorities_container">
+                        <table id="priorities">
+                            <th colspan="2">PRIORITIES</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                    <div class="table_container" id="emails_calls_container">
+                        <table id="emails_calls">
+                            <th colspan="2">EMAILS / CALLS</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="inner_container" id="die_routine_container">
+                    <div class="table_container food">
+                        <div class="food_title block"><h3>DIET AND ROUTINES</h3></div>
+                        <div class="block water_block">
+                            <div>Water Intake :</div>
+                            <div class="water_block_drop">
+                                <input type="checkbox" id="water1">
+                                <label for="water1"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water2">
+                                <label for="water2"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water3">
+                                <label for="water3"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water4">
+                                <label for="water4"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water5">
+                                <label for="water5"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water6">
+                                <label for="water6"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water7">
+                                <label for="water7"><ion-icon name="water"></ion-icon></label>
+                            </div>
+                        </div>
+                        <div class="block dish_plan">
+                            <div class="food_image dish_block"><img id="food_img" src="/images/mainfood.jpg" alt=""></div>
+                            <div class="dish_block">
+                                <div>
+                                    <label for="morning">Breakfast</label>
+                                    <input type="text" id="morning" onfocus="food_change(1)" onblur="food_reset()">
+                                </div>
+                                <div>
+                                    <label for="afternoon">Afternoon</label>
+                                    <input type="text" id="afternoon" onfocus="food_change(2)" onblur="food_reset()">
+                                </div>
+                                <div>
+                                    <label for="dinner">Dinner</label>
+                                    <input type="text" id="dinner" onfocus="food_change(3)" onblur="food_reset()">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video_container">
+                        <img src="/images/food3.jpg" alt=".....">
+                    </div>
+                </div>
+                <div class="inner_container" id="notes_container">
+                    <div class="table_container">
+                        <table class="notes_table">
+                            <th>NOTES</th>
+                            <tr><td><textarea name="notes" class="notes" cols="30" rows="8" spellcheck="false"></textarea></td></tr>
+                        </table>
+                    </div>
+                    <div class="video_container">
+                        <img src="/images/notes.jpg" alt="...">
+                    </div>
+                </div>
+            </div>
+            <div class="container" id="wednesday_container">
+                <div class="inner_container" id="to_do_list_container">
+                    <div class="table_container">
+                        <table id="to_do_list">
+                            <th colspan="2">To do list</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                    <div class="video_container">
+                        <img id="to_do_image" src="/images/todo6.png" alt="....">>
+                    </div>
+                </div>
+                <div class="inner_container" id="emails_proirity_container">
+                    <div class="table_container" id="priorities_container">
+                        <table id="priorities">
+                            <th colspan="2">PRIORITIES</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                    <div class="table_container" id="emails_calls_container">
+                        <table id="emails_calls">
+                            <th colspan="2">EMAILS / CALLS</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="inner_container" id="die_routine_container">
+                    <div class="table_container food">
+                        <div class="food_title block"><h3>DIET AND ROUTINES</h3></div>
+                        <div class="block water_block">
+                            <div>Water Intake :</div>
+                            <div class="water_block_drop">
+                                <input type="checkbox" id="water1">
+                                <label for="water1"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water2">
+                                <label for="water2"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water3">
+                                <label for="water3"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water4">
+                                <label for="water4"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water5">
+                                <label for="water5"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water6">
+                                <label for="water6"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water7">
+                                <label for="water7"><ion-icon name="water"></ion-icon></label>
+                            </div>
+                        </div>
+                        <div class="block dish_plan">
+                            <div class="food_image dish_block"><img id="food_img" src="/images/mainfood.jpg" alt=""></div>
+                            <div class="dish_block">
+                                <div>
+                                    <label for="morning">Breakfast</label>
+                                    <input type="text" id="morning" onfocus="food_change(1)" onblur="food_reset()">
+                                </div>
+                                <div>
+                                    <label for="afternoon">Afternoon</label>
+                                    <input type="text" id="afternoon" onfocus="food_change(2)" onblur="food_reset()">
+                                </div>
+                                <div>
+                                    <label for="dinner">Dinner</label>
+                                    <input type="text" id="dinner" onfocus="food_change(3)" onblur="food_reset()">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video_container">
+                        <img src="/images/food3.jpg" alt=".....">
+                    </div>
+                </div>
+                <div class="inner_container" id="notes_container">
+                    <div class="table_container">
+                        <table class="notes_table">
+                            <th>NOTES</th>
+                            <tr><td><textarea name="notes" class="notes" cols="30" rows="8" spellcheck="false"></textarea></td></tr>
+                        </table>
+                    </div>
+                    <div class="video_container">
+                        <img src="/images/notes.jpg" alt="...">
+                    </div>
+                </div>
+            </div>
+            <div class="container" id="thursday_container">
+                <div class="inner_container" id="to_do_list_container">
+                    <div class="table_container">
+                        <table id="to_do_list">
+                            <th colspan="2">To do list</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                    <div class="video_container">
+                        <img id="to_do_image" src="/images/todo6.png" alt="....">
+                    </div>
+                </div>
+                <div class="inner_container" id="emails_proirity_container">
+                    <div class="table_container" id="priorities_container">
+                        <table id="priorities">
+                            <th colspan="2">PRIORITIES</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                    <div class="table_container" id="emails_calls_container">
+                        <table id="emails_calls">
+                            <th colspan="2">EMAILS / CALLS</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="inner_container" id="die_routine_container">
+                    <div class="table_container food">
+                        <div class="food_title block"><h3>DIET AND ROUTINES</h3></div>
+                        <div class="block water_block">
+                            <div>Water Intake :</div>
+                            <div class="water_block_drop">
+                                <input type="checkbox" id="water1">
+                                <label for="water1"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water2">
+                                <label for="water2"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water3">
+                                <label for="water3"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water4">
+                                <label for="water4"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water5">
+                                <label for="water5"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water6">
+                                <label for="water6"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water7">
+                                <label for="water7"><ion-icon name="water"></ion-icon></label>
+                            </div>
+                        </div>
+                        <div class="block dish_plan">
+                            <div class="food_image dish_block"><img id="food_img" src="/images/mainfood.jpg" alt=""></div>
+                            <div class="dish_block">
+                                <div>
+                                    <label for="morning">Breakfast</label>
+                                    <input type="text" id="morning" onfocus="food_change(1)" onblur="food_reset()">
+                                </div>
+                                <div>
+                                    <label for="afternoon">Afternoon</label>
+                                    <input type="text" id="afternoon" onfocus="food_change(2)" onblur="food_reset()">
+                                </div>
+                                <div>
+                                    <label for="dinner">Dinner</label>
+                                    <input type="text" id="dinner" onfocus="food_change(3)" onblur="food_reset()">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video_container">
+                        <img src="/images/food3.jpg" alt=".....">
+                    </div>
+                </div>
+                <div class="inner_container" id="notes_container">
+                    <div class="table_container">
+                        <table class="notes_table">
+                            <th>NOTES</th>
+                            <tr><td><textarea name="notes" class="notes" cols="30" rows="8" spellcheck="false"></textarea></td></tr>
+                        </table>
+                    </div>
+                    <div class="video_container">
+                        <img src="/images/notes.jpg" alt="...">
+                    </div>
+                </div>
+            </div>
+            <div class="container" id="friday_container">
+                <div class="inner_container" id="to_do_list_container">
+                    <div class="table_container">
+                        <table id="to_do_list">
+                            <th colspan="2">To do list</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                    <div class="video_container">
+                        <img id="to_do_image" src="/images/todo6.png" alt="....">
+                    </div>
+                </div>
+                <div class="inner_container" id="emails_proirity_container">
+                    <div class="table_container" id="priorities_container">
+                        <table id="priorities">
+                            <th colspan="2">PRIORITIES</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                    <div class="table_container" id="emails_calls_container">
+                        <table id="emails_calls">
+                            <th colspan="2">EMAILS / CALLS</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="inner_container" id="die_routine_container">
+                    <div class="table_container food">
+                        <div class="food_title block"><h3>DIET AND ROUTINES</h3></div>
+                        <div class="block water_block">
+                            <div>Water Intake :</div>
+                            <div class="water_block_drop">
+                                <input type="checkbox" id="water1">
+                                <label for="water1"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water2">
+                                <label for="water2"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water3">
+                                <label for="water3"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water4">
+                                <label for="water4"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water5">
+                                <label for="water5"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water6">
+                                <label for="water6"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water7">
+                                <label for="water7"><ion-icon name="water"></ion-icon></label>
+                            </div>
+                        </div>
+                        <div class="block dish_plan">
+                            <div class="food_image dish_block"><img id="food_img" src="/images/mainfood.jpg" alt=""></div>
+                            <div class="dish_block">
+                                <div>
+                                    <label for="morning">Breakfast</label>
+                                    <input type="text" id="morning" onfocus="food_change(1)" onblur="food_reset()">
+                                </div>
+                                <div>
+                                    <label for="afternoon">Afternoon</label>
+                                    <input type="text" id="afternoon" onfocus="food_change(2)" onblur="food_reset()">
+                                </div>
+                                <div>
+                                    <label for="dinner">Dinner</label>
+                                    <input type="text" id="dinner" onfocus="food_change(3)" onblur="food_reset()">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video_container">
+                        <img src="/images/food3.jpg" alt=".....">
+                    </div>
+                </div>
+                <div class="inner_container" id="notes_container">
+                    <div class="table_container">
+                        <table class="notes_table">
+                            <th>NOTES</th>
+                            <tr><td><textarea name="notes" class="notes" cols="30" rows="8" spellcheck="false"></textarea></td></tr>
+                        </table>
+                    </div>
+                    <div class="video_container">
+                        <img src="/images/food3.avif" alt=".....">
+                    </div>
+                </div>
+            </div>
+            <div class="container" id="saturday_container">
+                <div class="inner_container" id="to_do_list_container">
+                    <div class="table_container">
+                        <table id="to_do_list">
+                            <th colspan="2">To do list</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                    <div class="video_container">
+                        <img id="to_do_image" src="/images/todo6.png" alt="....">
+                    </div>
+                </div>
+                <div class="inner_container" id="emails_proirity_container">
+                    <div class="table_container" id="priorities_container">
+                        <table id="priorities">
+                            <th colspan="2">PRIORITIES</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                    <div class="table_container" id="emails_calls_container">
+                        <table id="emails_calls">
+                            <th colspan="2">EMAILS / CALLS</th>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                            <tr><td><input class="check_list" type="checkbox"></td><td contenteditable="true" spellcheck="false"></td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="inner_container" id="die_routine_container">
+                    <div class="table_container food">
+                        <div class="food_title block"><h3>DIET AND ROUTINES</h3></div>
+                        <div class="block water_block">
+                            <div>Water Intake :</div>
+                            <div class="water_block_drop">
+                                <input type="checkbox" id="water1">
+                                <label for="water1"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water2">
+                                <label for="water2"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water3">
+                                <label for="water3"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water4">
+                                <label for="water4"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water5">
+                                <label for="water5"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water6">
+                                <label for="water6"><ion-icon name="water"></ion-icon></label>
+                                <input type="checkbox" id="water7">
+                                <label for="water7"><ion-icon name="water"></ion-icon></label>
+                            </div>
+                        </div>
+                        <div class="block dish_plan">
+                            <div class="food_image dish_block"><img id="food_img" src="/images/mainfood.jpg" alt=""></div>
+                            <div class="dish_block">
+                                <div>
+                                    <label for="morning">Breakfast</label>
+                                    <input type="text" id="morning" onfocus="food_change(1)" onblur="food_reset()">
+                                </div>
+                                <div>
+                                    <label for="afternoon">Afternoon</label>
+                                    <input type="text" id="afternoon" onfocus="food_change(2)" onblur="food_reset()">
+                                </div>
+                                <div>
+                                    <label for="dinner">Dinner</label>
+                                    <input type="text" id="dinner" onfocus="food_change(3)" onblur="food_reset()">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video_container">
+                        <img src="/images/food3.jpg" alt=".....">
+                    </div>
+                </div>
+                <div class="inner_container" id="notes_container">
+                    <div class="table_container">
+                        <table class="notes_table">
+                            <th>NOTES</th>
+                            <tr><td><textarea name="notes" class="notes" cols="30" rows="8" spellcheck="false"></textarea></td></tr>
+                        </table>
+                    </div>
+                    <div class="video_container">
+                        <img src="/images/notes.jpg" alt="...">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer -->
+        <div id="footer">
+            <h5 id="footer_about_heading">About</h5>
+            <p id="footer_description">
+                This website is optimized for make your day to day plan so that you can't forget do your precious work.more to know about this click on this link <a href="/HTML/about.html">About</a>
+            </p>
+        </div>
+    </div> 
+    <!-- body overlay -->
+    <div class="body_overlay hide"></div>
+    <div id="body_load_container" ><div id="body_loader"></div></div>
+    <!-- script -->
+    <script src="/API/index.js" language="Javascript"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
