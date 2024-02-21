@@ -231,18 +231,18 @@ function change_day_container(btn,day){
 function food_change(val){
    let img= document.getElementById("food_img");
    if(val==1){
-        img.src="/images/breakfast3.jpg"
+        img.src="../images/breakfast3.jpg"
    }
    if(val==2){
-        img.src="/images/lunch.jpg"
+        img.src="../images/lunch.jpg"
    }
    if(val==3){
-    img.src="/images/dinner.jpg"
+    img.src="../images/dinner.jpg"
    }
 }
 
 function food_reset(){
-    document.getElementById("food_img").src="/images/mainfood.jpg";
+    document.getElementById("food_img").src="../images/mainfood.jpg";
 }
 
 function close_profile_card() {

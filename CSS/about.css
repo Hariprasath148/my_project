@@ -9,7 +9,7 @@ body {
     width: 100dvw;
     height: 100dvh;
     background-color: black;
-    background-image: url(/aboutimages/toto.jpg);
+    background-image: url(../aboutimages/toto.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
