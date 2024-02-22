@@ -37,18 +37,20 @@
     border-bottom: 8px solid blue;
     border-radius: 50%;
     animation: 1s spin ease infinite;
+    margin-bottom: 200px ;
 }
 
 #container_loader.hide {
     display: none;
 }
 
-/* @keyframes blur {
-    to{
-       background-color: rgba(255, 255, 255, 0.071);
-        backdrop-filter: blur(3px); 
+@keyframes blur {
+    100%{
+        background-color: rgba(255, 255, 255, 0);
+         opacity: 0;
+         visibility: hidden;
     }
-} */
+}
 
 @keyframes spin {
     to{
