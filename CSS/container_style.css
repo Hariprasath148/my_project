@@ -12,6 +12,50 @@
     display: flex;
 }
 
+#container_loader {
+    position: sticky;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--base_color);
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 230;
+    backdrop-filter: blur(10px);
+    animation: 1s blur ease infinite;
+    transition: 1s;
+}
+
+
+#loader {
+    width: 70px;
+    height: 70px;
+    border: 8px solid #e0e0e0;
+    border-top: 8px solid blue;
+    border-bottom: 8px solid blue;
+    border-radius: 50%;
+    animation: 1s spin ease infinite;
+}
+
+#container_loader.hide {
+    display: none;
+}
+
+/* @keyframes blur {
+    to{
+       background-color: rgba(255, 255, 255, 0.071);
+        backdrop-filter: blur(3px); 
+    }
+} */
+
+@keyframes spin {
+    to{
+        transform: rotate(360deg);
+    }
+}
+
 #container_title {
     width: 100%;
     height: fit-content;

@@ -218,6 +218,10 @@ function close_sidebar(a){
 //main Content Lodaing 
 
 function change_day_container(btn,day){
+    let main_container = document.querySelector(".app_container");
+    main_container.style.overflowY = "hidden";
+    let loader = document.querySelector("#container_loader");
+    loader.classList.remove("hide");
     document.querySelector("#top_scrollbar > .active").classList.remove("active");
     btn.classList.add("active");
     document.querySelector(".day").innerHTML = btn.text;
@@ -225,7 +229,11 @@ function change_day_container(btn,day){
     document.querySelector("#"+day+"_container").classList.add("active");
     let current_day = document.querySelector(".container.active");
     current_day.parentNode.insertBefore(current_day,current_day.parentNode.firstChild);
-    document.querySelector(".app_container").scrollTop = 0;
+    setTimeout(()=>{
+        document.querySelector(".app_container").scrollTop = 0;
+        loader.classList.add("hide");
+        main_container.style.overflowY = "auto";
+    },500);
 }
 
 function food_change(val){
