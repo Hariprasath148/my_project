@@ -223,14 +223,13 @@ function change_day_container(btn,day){
     let loader = document.querySelector("#container_loader");
     let scroll_postion = main_container.scrollTop;
     let main_container_height = main_container.offsetHeight;
-    if(scroll_postion > 100){
+    if(scroll_postion > main_container_height){
         loader.style.position = "sticky";
     }
     else{
         loader.style.position = "absolute";
     }
     loader.classList.remove("hide");
-    document.querySelector(".app_container").scrollTop = 0;
     document.querySelector("#top_scrollbar > .active").classList.remove("active");
     btn.classList.add("active");
     document.querySelector(".day").innerHTML = btn.text;
@@ -241,6 +240,7 @@ function change_day_container(btn,day){
     setTimeout(()=>{
         loader.classList.add("hide");
         main_container.style.overflowY = "auto";
+        document.querySelector(".app_container").scrollTop = 0;
     },500);
 }
 
