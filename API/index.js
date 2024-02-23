@@ -223,7 +223,7 @@ function change_day_container(btn,day){
     let loader = document.querySelector("#container_loader");
     let scroll_postion = main_container.scrollTop;
     let main_container_height = main_container.offsetHeight;
-    if(scroll_postion > 50){
+    if(scroll_postion > 10){
         loader.style.position = "sticky";
     }
     else{
